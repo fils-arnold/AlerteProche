@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<Color x:Key="Red">#DC2626</Color>
+	<Color x:Key="DarkRed">#7F0A0A</Color>
+	<Color x:Key="Green">#1C9B45</Color>
+	<Color x:Key="Navy">#0F1B3D</Color>
+	<Color x:Key="Blue">#1D6FE0</Color>
+	<Color x:Key="Purple">#6D35C4</Color>
+	<Color x:Key="Orange">#EA6F0B</Color>
+	<Color x:Key="Gray100">#F3F4F6</Color>
+	<Color x:Key="Gray300">#D1D5DB</Color>
+	<Color x:Key="Gray600">#6B7280</Color>
+
+	<!-- Couleurs et tailles modifiées à l'exécution (taille du texte, contraste élevé) -->
+	<Color x:Key="PageBackground">#FFFFFF</Color>
+	<Color x:Key="CardBackground">#FFFFFF</Color>
+	<Color x:Key="TextPrimary">#111827</Color>
+	<Color x:Key="TextMuted">#6B7280</Color>
+	<Color x:Key="CardBorder">#D1D5DB</Color>
+	<x:Double x:Key="FontBody">16</x:Double>
+	<x:Double x:Key="FontTitle">26</x:Double>
+	<x:Double x:Key="FontSmall">13</x:Double>
+	<x:Double x:Key="FontButton">18</x:Double>
+</ResourceDictionary>
