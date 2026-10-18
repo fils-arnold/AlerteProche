@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.SplashPage"
+             Shell.NavBarIsVisible="False"
+             >
+  <ContentPage.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+      <GradientStop Color="#7F0A0A" Offset="0.0" />
+      <GradientStop Color="#000000" Offset="1.0" />
+    </LinearGradientBrush>
+  </ContentPage.Background>
+  <VerticalStackLayout VerticalOptions="Center" Spacing="18" Padding="30">
+    <Label Text="🛡" FontSize="110" HorizontalOptions="Center" TextColor="White" />
+    <Label Text="AlerteProche" FontSize="40" FontAttributes="Bold,Italic" TextColor="White" HorizontalOptions="Center" />
+    <BoxView HeightRequest="2" WidthRequest="220" Color="#DC2626" HorizontalOptions="Center" />
+    <Label Text="{h:Tr splash_slogan}" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" />
+  </VerticalStackLayout>
+</ContentPage>

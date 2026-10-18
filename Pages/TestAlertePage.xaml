@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.TestAlertePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="*,Auto" Padding="20,24">
+    <VerticalStackLayout Spacing="16" VerticalOptions="Center">
+      <c:LogoView Accent="{StaticResource Green}" />
+      <Label Text="{h:Tr test_title}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+      <Label Text="🔴" FontSize="120" HorizontalOptions="Center" />
+      <Label Text="{h:Tr test_text}" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr test_note}" HorizontalTextAlignment="Center" />
+      <Label Text="{Binding Error}" TextColor="{StaticResource Red}" IsVisible="{Binding HasError}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+    <VerticalStackLayout Grid.Row="1" Spacing="8">
+      <Button Text="{h:Tr test_launch}" Style="{StaticResource DangerButton}" Command="{Binding LaunchCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}}" />
+      <Label Text="{h:Tr test_sms}" TextColor="{StaticResource Green}" HorizontalTextAlignment="Center" FontSize="13" />
+      <Button Text="{h:Tr test_skip}" Style="{StaticResource OutlineButton}" Command="{Binding SkipCommand}" />
+    </VerticalStackLayout>
+  </Grid>
+</ContentPage>

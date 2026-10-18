@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.AjoutProchePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="12">
+      <Grid ColumnDefinitions="Auto,*,Auto">
+        <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+        <c:LogoView Grid.Column="1" Accent="{StaticResource Green}" />
+      </Grid>
+      <c:StepsView Current="4" IsVisible="{Binding IsOnboarding}" />
+      <Label Text="{h:Tr step_4}" HorizontalTextAlignment="Center" IsVisible="{Binding IsOnboarding}" />
+      <Label Text="{h:Tr add_title}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr add_subtitle}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr add_name}" FontAttributes="Bold" />
+      <Entry Text="{Binding FullName}" Placeholder="{h:Tr add_name_ph}" />
+      <Label Text="{h:Tr add_phone}" FontAttributes="Bold" />
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+        <Label Text="+237" VerticalOptions="Center" FontAttributes="Bold" />
+        <Entry Grid.Column="1" Text="{Binding Phone}" Keyboard="Telephone" MaxLength="12" Placeholder="6XX XXX XXX" />
+      </Grid>
+      <Label Text="{Binding Error}" TextColor="{StaticResource Red}" IsVisible="{Binding HasError}" />
+      <Button Text="{h:Tr add_send}" Style="{StaticResource PrimaryButton}" Command="{Binding SendInvitationCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}}" />
+      <Border Style="{StaticResource Card}" BackgroundColor="#E3F4E8" Stroke="#B8E0C2">
+        <Label Text="{h:Tr add_note}" />
+      </Border>
+      <Button Text="{h:Tr add_help}" Style="{StaticResource LinkButton}" Command="{Binding HelpCommand}" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

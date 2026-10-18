@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.AutorisationsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="*,Auto" Padding="20,16">
+    <ScrollView>
+      <VerticalStackLayout Spacing="12">
+        <c:LogoView Accent="{StaticResource Purple}" />
+        <Label Text="{h:Tr step_3}" HorizontalTextAlignment="Center" />
+        <c:StepsView Current="3" />
+        <Label Text="{h:Tr perm_title}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+        <Label Text="{h:Tr perm_intro}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+          <Border WidthRequest="60" HeightRequest="60" BackgroundColor="#E9E1F8" StrokeThickness="0" VerticalOptions="Start">
+            <Border.StrokeShape><RoundRectangle CornerRadius="30" /></Border.StrokeShape>
+            <Label Text="📍" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+          </Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr perm_loc}" Style="{StaticResource Title}" FontSize="20" />
+            <Label Text="{h:Tr perm_why}" FontAttributes="Bold" />
+            <Label Text="{h:Tr perm_loc_why}" Style="{StaticResource Muted}" />
+            <Label Text="{h:Tr perm_loc_note}" Style="{StaticResource Muted}" />
+            <Button Text="{Binding LocationText}" Command="{Binding LocationCommand}" BackgroundColor="{StaticResource Purple}" TextColor="White" FontAttributes="Bold" CornerRadius="14" HorizontalOptions="End" />
+          </VerticalStackLayout>
+        </Grid>
+      </Border>
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+          <Border WidthRequest="60" HeightRequest="60" BackgroundColor="#DDF1E3" StrokeThickness="0" VerticalOptions="Start">
+            <Border.StrokeShape><RoundRectangle CornerRadius="30" /></Border.StrokeShape>
+            <Label Text="✉" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+          </Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr perm_sms}" Style="{StaticResource Title}" FontSize="20" />
+            <Label Text="{h:Tr perm_why}" FontAttributes="Bold" />
+            <Label Text="{h:Tr perm_sms_why}" Style="{StaticResource Muted}" />
+            <Label Text="{h:Tr perm_sms_note}" Style="{StaticResource Muted}" />
+            <Button Text="{Binding SmsText}" Command="{Binding SmsCommand}" BackgroundColor="{StaticResource Green}" TextColor="White" FontAttributes="Bold" CornerRadius="14" HorizontalOptions="End" />
+          </VerticalStackLayout>
+        </Grid>
+      </Border>
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+          <Border WidthRequest="60" HeightRequest="60" BackgroundColor="#DEEAF9" StrokeThickness="0" VerticalOptions="Start">
+            <Border.StrokeShape><RoundRectangle CornerRadius="30" /></Border.StrokeShape>
+            <Label Text="🔔" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+          </Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr perm_notif}" Style="{StaticResource Title}" FontSize="20" />
+            <Label Text="{h:Tr perm_why}" FontAttributes="Bold" />
+            <Label Text="{h:Tr perm_notif_why}" Style="{StaticResource Muted}" />
+            <Label Text="{h:Tr perm_notif_note}" Style="{StaticResource Muted}" />
+            <Button Text="{Binding NotificationsText}" Command="{Binding NotificationsCommand}" BackgroundColor="{StaticResource Blue}" TextColor="White" FontAttributes="Bold" CornerRadius="14" HorizontalOptions="End" />
+          </VerticalStackLayout>
+        </Grid>
+      </Border>
+      </VerticalStackLayout>
+    </ScrollView>
+    <VerticalStackLayout Grid.Row="1" Spacing="6">
+      <Label Text="{h:Tr perm_footer}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+      <Button Text="{h:Tr common_continue}" Style="{StaticResource PrimaryButton}" Command="{Binding ContinueCommand}" />
+    </VerticalStackLayout>
+  </Grid>
+</ContentPage>

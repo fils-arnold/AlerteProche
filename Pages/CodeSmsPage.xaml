@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.CodeSmsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="16">
+      <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+      <c:LogoView Accent="{StaticResource Green}" />
+      <c:StepsView Current="2" IsVisible="{Binding IsRecovery, Converter={StaticResource InverseBool}}" />
+      <Label Text="{h:Tr step_2}" HorizontalTextAlignment="Center" IsVisible="{Binding IsRecovery, Converter={StaticResource InverseBool}}" />
+      <Label Text="{h:Tr code_title}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr code_subtitle}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+      <Grid HeightRequest="64">
+        <Grid ColumnDefinitions="*,*,*,*,*,*" ColumnSpacing="8">
+          <Border Grid.Column="0" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot1}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+          <Border Grid.Column="1" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot2}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+          <Border Grid.Column="2" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot3}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+          <Border Grid.Column="3" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot4}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+          <Border Grid.Column="4" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot5}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+          <Border Grid.Column="5" Style="{StaticResource Card}" Padding="0" HeightRequest="64"><Label Text="{Binding Slot6}" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" /></Border>
+        </Grid>
+        <!-- Champ réel, presque invisible, posé sur les six cases : un tap ouvre le clavier numérique -->
+        <Entry x:Name="CodeEntry" Opacity="0.02" Keyboard="Numeric" MaxLength="6" Text="{Binding Code}" SemanticProperties.Description="{h:Tr code_title}" />
+      </Grid>
+      <Label Text="{Binding Error}" TextColor="{StaticResource Red}" IsVisible="{Binding HasError}" HorizontalTextAlignment="Center" />
+      <Button Text="{h:Tr code_resend}" Style="{StaticResource OutlineButton}" Command="{Binding ResendCommand}" />
+      <Label Text="{h:Tr code_secure}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

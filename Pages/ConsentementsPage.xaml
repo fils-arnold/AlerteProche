@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.ConsentementsPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="*,Auto" Padding="20,16">
+    <ScrollView>
+      <VerticalStackLayout Spacing="14">
+        <Label Text="🛡 AlerteProche" TextColor="{StaticResource Red}" FontAttributes="Bold" FontSize="22" />
+        <Label Text="{h:Tr cons_title}" Style="{StaticResource Title}" />
+        <Label Text="{h:Tr cons_intro}" />
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+          <Border WidthRequest="56" HeightRequest="56" BackgroundColor="#2B3A67" StrokeThickness="0">
+  <Border.StrokeShape><RoundRectangle CornerRadius="28" /></Border.StrokeShape>
+  <Label Text="📍" FontSize="28" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+</Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr cons_loc}" FontAttributes="Bold" />
+            <Label Text="{h:Tr cons_loc_text}" Style="{StaticResource Muted}" />
+          </VerticalStackLayout>
+          <CheckBox Grid.Column="2" IsChecked="{Binding Location}" Color="{StaticResource Green}" VerticalOptions="Center" SemanticProperties.Description="{h:Tr cons_loc}" />
+        </Grid>
+      </Border>
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+          <Border WidthRequest="56" HeightRequest="56" BackgroundColor="#3CB054" StrokeThickness="0">
+  <Border.StrokeShape><RoundRectangle CornerRadius="28" /></Border.StrokeShape>
+  <Label Text="✉" FontSize="28" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+</Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr cons_sms}" FontAttributes="Bold" />
+            <Label Text="{h:Tr cons_sms_text}" Style="{StaticResource Muted}" />
+          </VerticalStackLayout>
+          <CheckBox Grid.Column="2" IsChecked="{Binding Sms}" Color="{StaticResource Green}" VerticalOptions="Center" SemanticProperties.Description="{h:Tr cons_sms}" />
+        </Grid>
+      </Border>
+        <Border Style="{StaticResource Card}">
+        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+          <Border WidthRequest="56" HeightRequest="56" BackgroundColor="#EA6F0B" StrokeThickness="0">
+  <Border.StrokeShape><RoundRectangle CornerRadius="28" /></Border.StrokeShape>
+  <Label Text="🗑" FontSize="28" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+</Border>
+          <VerticalStackLayout Grid.Column="1" Spacing="4">
+            <Label Text="{h:Tr cons_ret}" FontAttributes="Bold" />
+            <Label Text="{h:Tr cons_ret_text}" Style="{StaticResource Muted}" />
+          </VerticalStackLayout>
+          <CheckBox Grid.Column="2" IsChecked="{Binding Retention}" Color="{StaticResource Green}" VerticalOptions="Center" SemanticProperties.Description="{h:Tr cons_ret}" />
+        </Grid>
+      </Border>
+      </VerticalStackLayout>
+    </ScrollView>
+    <VerticalStackLayout Grid.Row="1" Spacing="6">
+      <Button Text="{h:Tr cons_accept}" Style="{StaticResource DangerButton}" Command="{Binding AcceptCommand}" />
+      <Label Text="{h:Tr cons_footer}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+  </Grid>
+</ContentPage>

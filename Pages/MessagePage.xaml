@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.MessagePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="14">
+      <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+      <c:LogoView Accent="{StaticResource Green}" />
+      <Label Text="{h:Tr msg_title}" Style="{StaticResource Title}" />
+      <Label Text="{h:Tr msg_subtitle}" Style="{StaticResource Muted}" />
+      <Label Text="{h:Tr msg_name}" FontAttributes="Bold" />
+      <Entry Text="{Binding UserName}" Placeholder="{h:Tr msg_name_ph}" />
+      <Border Style="{StaticResource Card}">
+        <Grid RowDefinitions="*,Auto">
+          <Editor Text="{Binding Text}" IsReadOnly="{Binding IsEditing, Converter={StaticResource InverseBool}}" HeightRequest="140" AutoSize="TextChanges" BackgroundColor="Transparent" />
+          <Button Grid.Row="1" Text="✎" HorizontalOptions="End" BackgroundColor="Transparent" TextColor="{StaticResource Green}" FontSize="26" Command="{Binding EditCommand}" SemanticProperties.Description="{h:Tr msg_edit}" />
+        </Grid>
+      </Border>
+      <Label Text="{h:Tr msg_pos}" Style="{StaticResource Muted}" />
+      <Label Text="{Binding Error}" TextColor="{StaticResource Red}" IsVisible="{Binding HasError}" />
+      <Button Text="{h:Tr msg_save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" />
+      <Label Text="{h:Tr msg_later}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

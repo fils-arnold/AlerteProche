@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.TelephonePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="12">
+      <Grid ColumnDefinitions="*,Auto">
+        <c:LogoView Accent="{StaticResource Green}" HorizontalOptions="Start" VerticalOptions="Center" />
+        <Button Grid.Column="1" Text="♿" FontSize="26" WidthRequest="56" HeightRequest="56" CornerRadius="28" BackgroundColor="Transparent" BorderColor="{StaticResource Navy}" BorderWidth="2" TextColor="{StaticResource Navy}" Command="{Binding AccessibilityCommand}" SemanticProperties.Description="{h:Tr a11y_title}" />
+      </Grid>
+      <Label Text="{h:Tr tel_title}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr tel_subtitle}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+      <Border Style="{StaticResource Card}" Stroke="{StaticResource Green}">
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+          <Label Text="🇨🇲" FontSize="34" VerticalOptions="Center" />
+          <VerticalStackLayout Grid.Column="1">
+            <Label Text="{h:Tr tel_country}" />
+            <Label Text="{Binding Formatted}" FontSize="22" FontAttributes="Bold" />
+          </VerticalStackLayout>
+        </Grid>
+      </Border>
+      <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*" RowSpacing="8" ColumnSpacing="8">
+        <Button Grid.Row="0" Grid.Column="0" Text="1" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="1" />
+        <Button Grid.Row="0" Grid.Column="1" Text="2" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="2" />
+        <Button Grid.Row="0" Grid.Column="2" Text="3" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="3" />
+        <Button Grid.Row="1" Grid.Column="0" Text="4" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="4" />
+        <Button Grid.Row="1" Grid.Column="1" Text="5" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="5" />
+        <Button Grid.Row="1" Grid.Column="2" Text="6" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="6" />
+        <Button Grid.Row="2" Grid.Column="0" Text="7" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="7" />
+        <Button Grid.Row="2" Grid.Column="1" Text="8" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="8" />
+        <Button Grid.Row="2" Grid.Column="2" Text="9" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="9" />
+        <Button Grid.Row="3" Grid.Column="1" Text="0" Style="{StaticResource KeyButton}" Command="{Binding DigitCommand}" CommandParameter="0" />
+        <Button Grid.Row="3" Grid.Column="2" Text="⌫" Style="{StaticResource KeyButton}" Command="{Binding BackspaceCommand}" SemanticProperties.Description="{h:Tr a11y_erase}" />
+      </Grid>
+      <Label Text="{Binding Error}" TextColor="{StaticResource Red}" IsVisible="{Binding HasError}" HorizontalTextAlignment="Center" />
+      <Button Text="{h:Tr tel_receive}" Style="{StaticResource PrimaryButton}" Command="{Binding ReceiveCodeCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}}" />
+      <Label Text="{h:Tr step_1}" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+      <c:StepsView Current="1" />
+      <Label Text="{h:Tr tel_secure}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
