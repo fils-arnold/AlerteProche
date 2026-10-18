@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.ProtectionFamillePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="12">
+      <Grid ColumnDefinitions="Auto,*">
+        <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+        <c:LogoView Grid.Column="1" Accent="{StaticResource Green}" />
+      </Grid>
+      <Label Text="{h:Tr prot_title}" Style="{StaticResource Title}" />
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Label Text="🔒" FontSize="30" VerticalOptions="Center" />
+            <VerticalStackLayout Grid.Column="1">
+              <Label Text="{h:Tr prot_duress}" FontAttributes="Bold" FontSize="18" />
+              <Label Text="{h:Tr prot_duress_sub}" Style="{StaticResource Muted}" />
+            </VerticalStackLayout>
+          </Grid>
+          <Switch IsToggled="{Binding DuressOn}" HorizontalOptions="End" SemanticProperties.Description="{h:Tr prot_duress}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Label Text="🧑" FontSize="30" VerticalOptions="Center" />
+            <VerticalStackLayout Grid.Column="1">
+              <Label Text="{h:Tr prot_helper}" FontAttributes="Bold" FontSize="18" />
+              <Label Text="{h:Tr prot_helper_sub}" Style="{StaticResource Muted}" />
+            </VerticalStackLayout>
+          </Grid>
+          <Label Text="{Binding HelperText}" /><Button Text="{h:Tr prot_helper_manage}" Style="{StaticResource OutlineButton}" Command="{Binding ManageHelperCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Label Text="❓" FontSize="30" VerticalOptions="Center" />
+            <VerticalStackLayout Grid.Column="1">
+              <Label Text="{h:Tr prot_checkin}" FontAttributes="Bold" FontSize="18" />
+              <Label Text="{h:Tr prot_checkin_sub}" Style="{StaticResource Muted}" />
+            </VerticalStackLayout>
+          </Grid>
+          <Grid ColumnDefinitions="*,Auto"><Button Text="{Binding CheckInInfo}" Style="{StaticResource LinkButton}" HorizontalOptions="Start" Command="{Binding EditCheckInTimeCommand}" /><Switch Grid.Column="1" IsToggled="{Binding CheckIn}" SemanticProperties.Description="{h:Tr prot_checkin}" /></Grid>
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Label Text="➕" FontSize="30" VerticalOptions="Center" />
+            <VerticalStackLayout Grid.Column="1">
+              <Label Text="{h:Tr prot_medical}" FontAttributes="Bold" FontSize="18" />
+              <Label Text="{h:Tr prot_medical_sub}" Style="{StaticResource Muted}" />
+            </VerticalStackLayout>
+          </Grid>
+          <Grid ColumnDefinitions="*,Auto"><Button Text="{h:Tr prot_medical_edit}" Style="{StaticResource LinkButton}" HorizontalOptions="Start" Command="{Binding EditMedicalCommand}" /><Switch Grid.Column="1" IsToggled="{Binding Medical}" SemanticProperties.Description="{h:Tr prot_medical}" /></Grid>
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Label Text="👨‍👩‍👧" FontSize="30" VerticalOptions="Center" />
+            <VerticalStackLayout Grid.Column="1">
+              <Label Text="{h:Tr prot_family}" FontAttributes="Bold" FontSize="18" />
+              <Label Text="{h:Tr prot_family_sub}" Style="{StaticResource Muted}" />
+            </VerticalStackLayout>
+          </Grid>
+          <Button Text="{h:Tr prot_family_manage}" Style="{StaticResource OutlineButton}" Command="{Binding ManagePlanCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Button Text="{h:Tr set_save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveAndBackCommand}" />
+      <Label Text="{h:Tr prot_footer}" Style="{StaticResource Muted}" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

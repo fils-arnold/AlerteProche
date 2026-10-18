@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.ReglagesPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="12">
+      <c:LogoView Accent="{StaticResource Green}" />
+      <Label Text="{h:Tr set_title}" Style="{StaticResource Title}" />
+
+      <Label Text="{h:Tr set_text}" FontAttributes="Bold" />
+      <Label Text="{h:Tr set_text_sub}" Style="{StaticResource Muted}" />
+      <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+        <Button Grid.Column="0" Text="{h:Tr set_normal}" Command="{Binding SetTextSizeCommand}" CommandParameter="0" Style="{StaticResource OutlineButton}" MinimumHeightRequest="48" HeightRequest="48" FontSize="14">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsSize0}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+        <Button Grid.Column="1" Text="{h:Tr set_large}" Command="{Binding SetTextSizeCommand}" CommandParameter="1" Style="{StaticResource OutlineButton}" MinimumHeightRequest="48" HeightRequest="48" FontSize="14">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsSize1}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+        <Button Grid.Column="2" Text="{h:Tr set_xlarge}" Command="{Binding SetTextSizeCommand}" CommandParameter="2" Style="{StaticResource OutlineButton}" MinimumHeightRequest="48" HeightRequest="48" FontSize="14">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsSize2}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+      </Grid>
+
+      <Label Text="{h:Tr set_countdown}" FontAttributes="Bold" Margin="0,8,0,0" />
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+        <Label Text="{Binding Countdown, StringFormat='{0} s'}" VerticalOptions="Center" FontAttributes="Bold" />
+        <Stepper Grid.Column="1" Minimum="3" Maximum="15" Increment="1" Value="{Binding Countdown}" HorizontalOptions="End" />
+      </Grid>
+
+      <Label Text="{h:Tr set_sensory}" FontAttributes="Bold" Margin="0,8,0,0" />
+      <Label Text="{h:Tr set_sensory_sub}" Style="{StaticResource Muted}" />
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_vibration}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding Vibration}" SemanticProperties.Description="{h:Tr set_vibration}" /></Grid>
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_voice}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding Voice}" SemanticProperties.Description="{h:Tr set_voice}" /></Grid>
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_sounds}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding Sounds}" SemanticProperties.Description="{h:Tr set_sounds}" /></Grid>
+
+      <Label Text="{h:Tr set_protect}" FontAttributes="Bold" Margin="0,8,0,0" />
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_protect_sub}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding Protection}" SemanticProperties.Description="{h:Tr set_protect_sub}" /></Grid>
+
+      <Label Text="{h:Tr set_comfort}" FontAttributes="Bold" Margin="0,8,0,0" />
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_voice_guide}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding VoiceGuide}" SemanticProperties.Description="{h:Tr set_voice_guide}" /></Grid>
+      <Grid ColumnDefinitions="*,Auto"><Label Text="{h:Tr set_discreet}" VerticalOptions="Center" /><Switch Grid.Column="1" IsToggled="{Binding Discreet}" SemanticProperties.Description="{h:Tr set_discreet}" /></Grid>
+
+      <Button Text="{h:Tr set_save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" Margin="0,10,0,0" />
+
+      <Label Text="{h:Tr set_more}" FontAttributes="Bold" Margin="0,12,0,0" />
+      <Button Text="{h:Tr set_link_protection}" Command="{Binding OpenProtectionCommand}" Style="{StaticResource OutlineButton}" HorizontalOptions="Fill" />
+      <Button Text="{h:Tr set_link_recovery}" Command="{Binding OpenRecoveryCommand}" Style="{StaticResource OutlineButton}" HorizontalOptions="Fill" />
+      <Button Text="{h:Tr set_link_numbers}" Command="{Binding OpenNumbersCommand}" Style="{StaticResource OutlineButton}" HorizontalOptions="Fill" />
+      <Button Text="{h:Tr set_link_message}" Command="{Binding OpenMessageCommand}" Style="{StaticResource OutlineButton}" HorizontalOptions="Fill" />
+      <Button Text="{h:Tr set_link_test}" Command="{Binding OpenTestCommand}" Style="{StaticResource OutlineButton}" HorizontalOptions="Fill" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>

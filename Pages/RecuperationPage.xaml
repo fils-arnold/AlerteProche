@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.RecuperationPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <ScrollView>
+    <VerticalStackLayout Padding="20,16" Spacing="12">
+      <Grid ColumnDefinitions="Auto,*">
+        <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+        <c:LogoView Grid.Column="1" Accent="{StaticResource Green}" />
+      </Grid>
+      <Label Text="{h:Tr rec_title}" Style="{StaticResource Title}" />
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border WidthRequest="34" HeightRequest="34" BackgroundColor="{StaticResource Green}" StrokeThickness="0">
+              <Border.StrokeShape><RoundRectangle CornerRadius="17" /></Border.StrokeShape>
+              <Label Text="1" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+            <Label Grid.Column="1" Text="{h:Tr rec_new_device}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+          </Grid>
+          <Label Text="{h:Tr rec_new_device_sub}" Style="{StaticResource Muted}" />
+          <Button Text="{h:Tr rec_recover}" Style="{StaticResource PrimaryButton}" Command="{Binding RecoverBySmsCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border WidthRequest="34" HeightRequest="34" BackgroundColor="{StaticResource Green}" StrokeThickness="0">
+              <Border.StrokeShape><RoundRectangle CornerRadius="17" /></Border.StrokeShape>
+              <Label Text="2" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+            <Label Grid.Column="1" Text="{h:Tr rec_change}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+          </Grid>
+          <Label Text="{h:Tr rec_change_sub}" Style="{StaticResource Muted}" />
+          <Entry Text="{Binding NewPhone}" Keyboard="Telephone" Placeholder="{h:Tr rec_new_phone}" ReturnCommand="{Binding ChangeNumberCommand}" /><Button Text="{h:Tr rec_change_btn}" Style="{StaticResource OutlineButton}" Command="{Binding ChangeNumberCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border WidthRequest="34" HeightRequest="34" BackgroundColor="{StaticResource Green}" StrokeThickness="0">
+              <Border.StrokeShape><RoundRectangle CornerRadius="17" /></Border.StrokeShape>
+              <Label Text="3" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+            <Label Grid.Column="1" Text="{h:Tr rec_rights}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+          </Grid>
+          <Label Text="{h:Tr rec_rights_sub}" Style="{StaticResource Muted}" />
+          <Button Text="{h:Tr rec_rights_btn}" Style="{StaticResource OutlineButton}" Command="{Binding RightsCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border WidthRequest="34" HeightRequest="34" BackgroundColor="{StaticResource Green}" StrokeThickness="0">
+              <Border.StrokeShape><RoundRectangle CornerRadius="17" /></Border.StrokeShape>
+              <Label Text="4" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+            <Label Grid.Column="1" Text="{h:Tr rec_delete}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+          </Grid>
+          <Label Text="{h:Tr rec_delete_sub}" Style="{StaticResource Muted}" />
+          <Button Text="{h:Tr rec_delete_btn}" Style="{StaticResource OutlineButton}" TextColor="{StaticResource Red}" BorderColor="{StaticResource Red}" Command="{Binding DeleteAccountCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Border Style="{StaticResource Card}">
+        <VerticalStackLayout Spacing="8">
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <Border WidthRequest="34" HeightRequest="34" BackgroundColor="{StaticResource Green}" StrokeThickness="0">
+              <Border.StrokeShape><RoundRectangle CornerRadius="17" /></Border.StrokeShape>
+              <Label Text="5" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+            <Label Grid.Column="1" Text="{h:Tr rec_consents}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+          </Grid>
+          <Label Text="{h:Tr rec_consents_sub}" Style="{StaticResource Muted}" />
+          <Button Text="{h:Tr rec_consents_btn}" Style="{StaticResource OutlineButton}" Command="{Binding ConsentHistoryCommand}" />
+        </VerticalStackLayout>
+      </Border>
+      <Label Text="{h:Tr rec_footer}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
