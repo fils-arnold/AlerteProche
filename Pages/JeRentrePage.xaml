@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.JeRentrePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="Auto,*" Padding="20,16">
+    <Grid ColumnDefinitions="Auto,*">
+      <Button Style="{StaticResource BackButton}" Text="‹" Command="{Binding BackCommand}" SemanticProperties.Description="{h:Tr a11y_back}" />
+      <c:LogoView Grid.Column="1" Accent="{StaticResource Green}" />
+    </Grid>
+    <!-- Avant le départ : choix de la durée -->
+    <VerticalStackLayout Grid.Row="1" Spacing="12" IsVisible="{Binding IsActive, Converter={StaticResource InverseBool}}">
+      <Label Text="{h:Tr trip_title}" FontSize="40" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+      <Label Text="{h:Tr trip_sub}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+      <Button Text="15 min" Command="{Binding ChooseCommand}" CommandParameter="15" Style="{StaticResource OutlineButton}" FontSize="24" HeightRequest="68">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsM15}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+      <Button Text="30 min" Command="{Binding ChooseCommand}" CommandParameter="30" Style="{StaticResource OutlineButton}" FontSize="24" HeightRequest="68">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsM30}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+      <Button Text="45 min" Command="{Binding ChooseCommand}" CommandParameter="45" Style="{StaticResource OutlineButton}" FontSize="24" HeightRequest="68">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsM45}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+      <Button Text="1 h" Command="{Binding ChooseCommand}" CommandParameter="60" Style="{StaticResource OutlineButton}" FontSize="24" HeightRequest="68">
+          <Button.Triggers>
+            <DataTrigger TargetType="Button" Binding="{Binding IsM60}" Value="True">
+              <Setter Property="BackgroundColor" Value="{StaticResource Green}" />
+              <Setter Property="TextColor" Value="White" />
+            </DataTrigger>
+          </Button.Triggers>
+        </Button>
+      <Button Text="{h:Tr trip_start}" Style="{StaticResource PrimaryButton}" Command="{Binding StartCommand}" Margin="0,20,0,0" />
+      <Label Text="{h:Tr trip_note}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+    <!-- Trajet en cours -->
+    <VerticalStackLayout Grid.Row="1" Spacing="14" VerticalOptions="Center" IsVisible="{Binding IsActive}">
+      <Label Text="{h:Tr trip_running}" Style="{StaticResource Title}" HorizontalTextAlignment="Center" />
+      <Label Text="{Binding RemainingText}" FontSize="64" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+      <Button Text="{h:Tr trip_arrived}" Style="{StaticResource PrimaryButton}" Command="{Binding ArrivedCommand}" />
+      <Button Text="{h:Tr trip_extend15}" Style="{StaticResource OutlineButton}" Command="{Binding ExtendCommand}" />
+    </VerticalStackLayout>
+  </Grid>
+</ContentPage>

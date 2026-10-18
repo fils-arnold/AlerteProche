@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.HistoriquePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="Auto,Auto,*" Padding="20,16" RowSpacing="12">
+    <Grid ColumnDefinitions="*,Auto">
+      <Label Text="{h:Tr hist_title}" Style="{StaticResource Title}" VerticalOptions="Center" />
+      <Button Grid.Column="1" Text="🗑" FontSize="22" BackgroundColor="Transparent" Command="{Binding ClearAllCommand}" SemanticProperties.Description="{h:Tr hist_clear}" />
+    </Grid>
+    <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="8">
+      <Button Text="{h:Tr hist_all}" Command="{Binding SetFilterCommand}" CommandParameter="all" Style="{StaticResource OutlineButton}" MinimumHeightRequest="44" HeightRequest="44" FontSize="14">
+        <Button.Triggers>
+          <DataTrigger TargetType="Button" Binding="{Binding Filter}" Value="all">
+            <Setter Property="BackgroundColor" Value="{StaticResource Navy}" />
+            <Setter Property="TextColor" Value="White" />
+          </DataTrigger>
+        </Button.Triggers>
+      </Button>
+      <Button Grid.Column="1" Text="{h:Tr hist_true}" Command="{Binding SetFilterCommand}" CommandParameter="true" Style="{StaticResource OutlineButton}" MinimumHeightRequest="44" HeightRequest="44" FontSize="14">
+        <Button.Triggers>
+          <DataTrigger TargetType="Button" Binding="{Binding Filter}" Value="true">
+            <Setter Property="BackgroundColor" Value="{StaticResource Navy}" />
+            <Setter Property="TextColor" Value="White" />
+          </DataTrigger>
+        </Button.Triggers>
+      </Button>
+      <Button Grid.Column="2" Text="{h:Tr hist_tests}" Command="{Binding SetFilterCommand}" CommandParameter="test" Style="{StaticResource OutlineButton}" MinimumHeightRequest="44" HeightRequest="44" FontSize="14">
+        <Button.Triggers>
+          <DataTrigger TargetType="Button" Binding="{Binding Filter}" Value="test">
+            <Setter Property="BackgroundColor" Value="{StaticResource Navy}" />
+            <Setter Property="TextColor" Value="White" />
+          </DataTrigger>
+        </Button.Triggers>
+      </Button>
+    </Grid>
+    <CollectionView Grid.Row="2" ItemsSource="{Binding Records}">
+      <CollectionView.EmptyView>
+        <Label Text="{h:Tr hist_empty}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" Margin="0,40" />
+      </CollectionView.EmptyView>
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+            <VerticalStackLayout Spacing="8">
+              <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout>
+                  <Label Text="{h:Tr hist_date}" Style="{StaticResource Muted}" />
+                  <Label Text="{Binding DateText}" FontAttributes="Bold" FontSize="18" />
+                </VerticalStackLayout>
+                <Label Grid.Column="1" Text="{Binding KindLabel}" TextColor="{Binding KindColor}" FontAttributes="Bold" VerticalOptions="Center" />
+              </Grid>
+              <Grid ColumnDefinitions="*,*">
+                <VerticalStackLayout>
+                  <Label Text="{h:Tr hist_time}" Style="{StaticResource Muted}" />
+                  <Label Text="{Binding TimeText}" FontAttributes="Bold" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                  <Label Text="{h:Tr hist_duration}" Style="{StaticResource Muted}" />
+                  <Label Text="{Binding DurationText}" FontAttributes="Bold" />
+                </VerticalStackLayout>
+              </Grid>
+              <BoxView HeightRequest="1" Color="{DynamicResource CardBorder}" />
+              <Label Text="{Binding ConfirmedLabel}" Style="{StaticResource Muted}" />
+              <Label Text="{Binding ConfirmedNamesText}" />
+              <Button Text="{h:Tr hist_qualify}" Style="{StaticResource OutlineButton}" TextColor="{StaticResource Blue}"
+                      Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HistoriqueViewModel}}, Path=QualifyCommand}" CommandParameter="{Binding .}" />
+            </VerticalStackLayout>
+          </Border>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </Grid>
+</ContentPage>

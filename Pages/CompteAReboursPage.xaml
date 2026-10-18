@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.CompteAReboursPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#7F0A0A">
+  <Grid RowDefinitions="Auto,*,Auto,2*" Padding="24,30" RowSpacing="12">
+    <Label Text="AlerteProche" TextColor="White" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center" />
+    <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" Spacing="0">
+      <Label Text="{Binding Remaining}" FontSize="150" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"
+             SemanticProperties.Description="{h:Tr cd_text}" />
+      <Label Text="{h:Tr cd_text}" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+    <!-- Très grand bouton d'annulation : un seul tap, sans précision gestuelle -->
+    <Button Grid.Row="3" Text="{h:Tr cd_cancel}" Command="{Binding CancelCommand}" BackgroundColor="White" TextColor="#7F0A0A"
+            FontSize="44" FontAttributes="Bold" CornerRadius="36" VerticalOptions="Fill"
+            SemanticProperties.Description="{h:Tr cd_cancel_desc}" />
+  </Grid>
+</ContentPage>
