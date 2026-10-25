@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Console développeur - AlerteProche{% endblock %}
+{% block content %}
+<div class="carte">
+  <h1>Console développeur</h1>
+  <p class="discret">Adresse publique des liens : {{ base }}</p>
+  <p class="discret">Cette page n'existe qu'en mode développement (DEV_MODE=1).</p>
+</div>
+
+<div class="carte">
+  <h2>SMS simulés (codes de vérification)</h2>
+  {% if messages %}
+  <table>
+    <tr><th>Heure (UTC)</th><th>Numéro</th><th>Message</th></tr>
+    {% for m in messages %}
+    <tr><td>{{ m.created_at[11:19] }}</td><td>{{ m.phone }}</td><td>{{ m.body }}</td></tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="discret">Aucun SMS pour le moment.</p>
+  {% endif %}
+</div>
+
+<div class="carte">
+  <h2>Proches enregistrés</h2>
+  {% if contacts %}
+  <table>
+    <tr><th>Propriétaire</th><th>Proche</th><th>État</th><th>Lien</th></tr>
+    {% for c in contacts %}
+    <tr>
+      <td>{{ c.owner_phone }}</td>
+      <td>{{ c.full_name }}<br>{{ c.phone }}</td>
+      <td>{% if c.status == 1 %}Accepté{% elif c.status == 2 %}Refusé{% else %}En attente{% endif %}</td>
+      <td><a href="/i/{{ c.invite_token }}">invitation</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="discret">Aucun proche enregistré.</p>
+  {% endif %}
+</div>
+
+<div class="carte">
+  <h2>Alertes</h2>
+  {% if alerts %}
+  <table>
+    <tr><th>Alerte</th><th>Propriétaire</th><th>État</th></tr>
+    {% for a in alerts %}
+    <tr>
+      <td><a href="/t/{{ a.id }}">{{ a.id }}</a></td>
+      <td>{{ a.owner_phone }}</td>
+      <td>{% if a.closed_at %}Clôturée{% elif a.is_test %}Test{% else %}En cours{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="discret">Aucune alerte pour le moment.</p>
+  {% endif %}
+</div>
+{% endblock %}

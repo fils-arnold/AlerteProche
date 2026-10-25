@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block title %}AlerteProche{% endblock %}</title>
+<style>
+:root {
+  --rouge: #b91c1c;
+  --rouge-fonce: #7f0a0a;
+  --vert: #1c9b45;
+  --gris: #6b7280;
+  --fond: #f5f5f4;
+  --carte: #ffffff;
+  --texte: #1f2937;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.45;
+}
+header {
+  background: var(--rouge-fonce);
+  color: #fff;
+  padding: 16px 20px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .02em;
+}
+main { max-width: 640px; margin: 0 auto; padding: 18px; }
+.carte {
+  background: var(--carte);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+}
+h1 { font-size: 1.35rem; margin: 0 0 8px; }
+h2 { font-size: 1.05rem; margin: 0 0 8px; }
+p { margin: 8px 0; }
+.bouton {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 12px;
+  color: #fff;
+  background: var(--rouge);
+}
+.bouton.vert { background: var(--vert); }
+.bouton.gris { background: #e5e7eb; color: var(--texte); }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.badge.rouge { background: #fde2e2; color: var(--rouge); }
+.badge.vert { background: #d8efdd; color: var(--vert); }
+.badge.gris { background: #e5e7eb; color: var(--gris); }
+.badge.orange { background: #fdeedd; color: #ea6f0b; }
+.discret { color: var(--gris); font-size: .9rem; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid #e5e7eb; vertical-align: top; word-break: break-word; }
+</style>
+{% block head %}{% endblock %}
+</head>
+<body>
+<header>AlerteProche</header>
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>

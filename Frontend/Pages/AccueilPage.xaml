@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:h="clr-namespace:AlerteProche.Helpers"
+             xmlns:c="clr-namespace:AlerteProche.Controls"
+             xmlns:vm="clr-namespace:AlerteProche.ViewModels"
+             x:Class="AlerteProche.Pages.AccueilPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource PageBackground}">
+  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Padding="20,16" RowSpacing="14">
+    <Grid ColumnDefinitions="*,Auto">
+      <c:LogoView Accent="{StaticResource Red}" HorizontalOptions="Start" />
+      <Button Grid.Column="1" Text="☰" FontSize="30" BackgroundColor="Transparent" TextColor="{DynamicResource TextPrimary}" Command="{Binding MenuCommand}" SemanticProperties.Description="{h:Tr home_menu}" />
+    </Grid>
+    <Border Grid.Row="1" Style="{StaticResource Card}" BackgroundColor="{StaticResource Red}" Stroke="{StaticResource Red}" IsVisible="{Binding ShowBanner}">
+      <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding OpenActiveCommand}" /></Border.GestureRecognizers>
+      <Label Text="{Binding StatusLine}" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+    </Border>
+
+    <Border Grid.Row="2" WidthRequest="270" HeightRequest="270" HorizontalOptions="Center" VerticalOptions="Center"
+            BackgroundColor="{StaticResource Red}" StrokeThickness="0"
+            SemanticProperties.Description="{h:Tr home_alert}" SemanticProperties.Hint="{h:Tr home_status}">
+      <Border.StrokeShape><RoundRectangle CornerRadius="135" /></Border.StrokeShape>
+      <Border.GestureRecognizers><TapGestureRecognizer Command="{Binding AlertCommand}" /></Border.GestureRecognizers>
+      <VerticalStackLayout VerticalOptions="Center" Spacing="6">
+        <Label Text="🔔" FontSize="80" HorizontalOptions="Center" TextColor="White" />
+        <Label Text="{h:Tr home_alert}" FontSize="34" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" />
+      </VerticalStackLayout>
+    </Border>
+    <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="12">
+      <Button Text="{h:Tr home_trip}" Style="{StaticResource OutlineButton}" Command="{Binding TripCommand}" />
+      <Button Grid.Column="1" Text="{h:Tr home_contacts}" Style="{StaticResource OutlineButton}" Command="{Binding ContactsCommand}" />
+    </Grid>
+    <Label Grid.Row="4" Text="{Binding StatusLine}" Style="{StaticResource Muted}" HorizontalTextAlignment="Center" />
+  </Grid>
+</ContentPage>

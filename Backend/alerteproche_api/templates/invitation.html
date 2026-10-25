@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Invitation - AlerteProche{% endblock %}
+{% block content %}
+<div class="carte">
+  <h1>Bonjour {{ contact_name }}</h1>
+  {% if result == "accept" %}
+    <p><span class="badge vert">Invitation acceptée</span></p>
+    <p>Merci. Vous recevrez désormais par SMS les alertes de <strong>{{ owner }}</strong> avec un lien pour suivre sa position et confirmer que vous vous en occupez.</p>
+  {% elif result == "refuse" %}
+    <p><span class="badge gris">Invitation refusée</span></p>
+    <p>Vous ne recevrez pas les alertes de <strong>{{ owner }}</strong>. Vous pouvez fermer cette page.</p>
+  {% else %}
+    <p><strong>{{ owner }}</strong> ({{ owner_phone }}) vous invite à devenir son proche de confiance sur AlerteProche.</p>
+    <p>Si cette personne déclenche une alerte, vous recevrez un SMS avec sa position. Vous pourrez alors confirmer que vous vous en occupez.</p>
+    {% if status == 1 %}
+      <p><span class="badge vert">Vous avez déjà accepté cette invitation</span></p>
+    {% elif status == 2 %}
+      <p><span class="badge gris">Vous avez refusé cette invitation</span></p>
+    {% endif %}
+    <form method="post">
+      <button class="bouton vert" type="submit" name="action" value="accept">J'accepte d'être alerté(e)</button>
+      <button class="bouton gris" type="submit" name="action" value="refuse">Je refuse</button>
+    </form>
+  {% endif %}
+</div>
+<p class="discret">AlerteProche ne partage votre numéro qu'avec la personne qui vous invite.</p>
+{% endblock %}
